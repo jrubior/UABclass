@@ -7,7 +7,7 @@ clear; clc; close all;
 alpha = 0.4;
 beta  = 0.9;
 rho   = 0.9;
-sigma = 0.05;
+sigma = 1;
 
 %% 1. Steady State (deterministic, z = 0, sigma = 0)
 % From: 1 = alpha * beta * k^(alpha - 1)
@@ -29,17 +29,17 @@ fprintf('  c_ss = %.6f\n', c_ss);
 H1 = -1 / c_ss^2;                 % d/dc_t (1/c_t)
 H2 = 1 / c_ss^2; % d/dc_{t+1}
 H3 = 0;                           % d/dk_t (Euler eq)
-H4 = (1-alpha) / (k_ss*c_ss); % d/dk_{t+1}
+H4 = -(alpha-1) * k_ss^(-1) / c_ss; % d/dk_{t+1}
 H5 = 0;                           % d/dz_t
-H6 = -1 / c_ss;               % d/dz_{t+1}
+H6 = -rho / c_ss;               % d/dz_{t+1}
 
 % Equation (2) derivatives (resource constraint)
 G1 = 1;             % d/dc_t
 G2 = 0;             % d/dc_{t+1}
 G3 = -alpha * k_ss^(alpha-1); % d/dk_t
 G4 = 1;             % d/dk_{t+1}
-G5 = -k_ss^alpha;   % d/dz_t  [since derivative of exp(z_t) = exp(z_t)]
-G6 = 0;             % d/dz_{t+1}
+G5 = 0;   % d/dz_t  [since derivative of exp(z_t) = exp(z_t)]
+G6 = -k_ss^alpha;             % d/dz_{t+1}
 
 F1=0;
 F2=0;
@@ -63,6 +63,8 @@ disp(A);
 fprintf('Matrix B = \n');
 disp(B);
 
+% Solving F_k F_zlag
+
 %% Optional: verify eigenvalues of the generalized eigenvalue problem
 % (B - λA)v = 0
 [VV, DD] = eig(B, A);
@@ -75,5 +77,25 @@ disp(eigvals);
 DDs = (DD(ind,ind));
 VVs = VV(:,ind);
 
-hx=VVs(1:2,1:2)*DDs(1:2,1:2)/(VVs(1:2,1:2))
-cx=VVs(3,1:2)/(VVs(1:2,1:2))
+P=VVs(1:2,1:2);
+
+hx=(P*DDs(1:2,1:2))/P
+cx=VVs(3,1:2)/P
+
+% Solving F_e
+
+C=[H1, H2*cx(1,1)+H4, H2*cx(1,2)+H6;
+   G1, G2*cx(1,1)+G4, G2*cx(1,2)+G6;
+   F1, F2*cx(1,1)+F4, F2*cx(1,2)+F6];
+
+ce=C\[0;0;sigma]
+
+% Solving F_chi
+
+D=[H1+H2, H2*cx(1,1)+H4, H2*cx(1,2)+H6;
+    G1+G2, G2*cx(1,1)+G4, G2*cx(1,2)+G6;
+    F1+F2, F2*cx(1,1)+F4, F2*cx(1,2)+F6];
+
+cchi=D\[0;0;0]
+
+
