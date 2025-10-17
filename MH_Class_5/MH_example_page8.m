@@ -8,7 +8,7 @@
 % Institution: Emory University
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-clear; clc; rng(1);
+clear; clc; 
 
 %% Parameters
 N     = 10000;          % Number of MH iterations
@@ -23,7 +23,7 @@ for j = 2:N
     x_star = x(j-1) + sigma*randn;
     
     % Step 3: Compute acceptance probability
-    phi_ratio = exp(-0.5*(x_star^2 - x(j-1)^2)); % φ(x*)/φ(x_{j-1})
+    phi_ratio = normpdf(x_star)/normpdf(x(j-1)); % φ(x*)/φ(x_{j-1})
     alpha = min(1, phi_ratio);
     
     % Step 4: Draw u ~ U(0,1)
