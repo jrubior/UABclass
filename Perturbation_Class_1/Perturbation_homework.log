@@ -1,0 +1,65 @@
+Starting Dynare (version 7-unstable-2025-10-09-2238-5833876e).
+Calling Dynare with arguments: none
+Starting preprocessing of the model file ...
+Found 3 equation(s).
+Evaluating expressions...
+Computing static model derivatives (order 1).
+Normalizing the static model...
+Finding the optimal block decomposition of the static model...
+2 block(s) found:
+  1 recursive block(s) and 1 simultaneous block(s).
+  the largest simultaneous block has 2 equation(s)
+                                 and 2 feedback variable(s).
+Computing dynamic model derivatives (order 1).
+Normalizing the dynamic model...
+Finding the optimal block decomposition of the dynamic model...
+2 block(s) found:
+  1 recursive block(s) and 1 simultaneous block(s).
+  the largest simultaneous block has 2 equation(s)
+                                 and 2 feedback variable(s).
+Preprocessing completed.
+Preprocessing time: 0h00m03s.
+
+MODEL SUMMARY
+
+  Number of variables:         3
+  Number of stochastic shocks: 1
+  Number of state variables:   2
+  Number of jumpers:           2
+  Number of static variables:  0
+
+
+MATRIX OF COVARIANCE OF EXOGENOUS SHOCKS
+Variables           e
+e            1.000000
+
+POLICY AND TRANSITION FUNCTIONS
+                                   c               k               a
+Constant                    0.323878        0.182181               0
+k(-1)                       0.711111        0.400000               0
+a(-1)                       0.291490        0.163963        0.900000
+e                           0.003239        0.001822        0.010000
+
+
+THEORETICAL MOMENTS
+VARIABLE         MEAN  STD. DEV.   VARIANCE
+c              0.3239     0.0118     0.0001
+k              0.1822     0.0066     0.0000
+a              0.0000     0.0229     0.0005
+
+
+
+MATRIX OF CORRELATIONS
+Variables         c       k       a
+c            1.0000  1.0000  0.9824
+k            1.0000  1.0000  0.9824
+a            0.9824  0.9824  1.0000
+
+
+
+COEFFICIENTS OF AUTOCORRELATION
+Order          1       2       3       4       5
+c         0.9559  0.8826  0.8033  0.7266  0.6553
+k         0.9559  0.8826  0.8033  0.7266  0.6553
+a         0.9000  0.8100  0.7290  0.6561  0.5905
+Total computing time : 0h00m09s
