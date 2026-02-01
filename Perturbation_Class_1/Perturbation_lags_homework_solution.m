@@ -7,7 +7,7 @@ clear; clc; close all;
 alpha = 0.4;
 beta  = 0.9;
 rho   = 0.9;
-sigma = 1;
+sigma = 0.01;
 
 %% 1. Steady State (deterministic, z = 0, sigma = 0)
 % From: 1 = alpha * beta * k^(alpha - 1)
