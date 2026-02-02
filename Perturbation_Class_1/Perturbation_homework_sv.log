@@ -1,0 +1,91 @@
+Starting Dynare (version 7-unstable-2025-10-09-2238-5833876e).
+Calling Dynare with arguments: none
+Starting preprocessing of the model file ...
+Found 4 equation(s).
+Evaluating expressions...
+Computing static model derivatives (order 1).
+Normalizing the static model...
+Finding the optimal block decomposition of the static model...
+3 block(s) found:
+  2 recursive block(s) and 1 simultaneous block(s).
+  the largest simultaneous block has 2 equation(s)
+                                 and 2 feedback variable(s).
+Computing dynamic model derivatives (order 1).
+Normalizing the dynamic model...
+Finding the optimal block decomposition of the dynamic model...
+2 block(s) found:
+  1 recursive block(s) and 1 simultaneous block(s).
+  the largest simultaneous block has 2 equation(s)
+                                 and 2 feedback variable(s).
+Preprocessing completed.
+Preprocessing time: 0h00m00s.
+
+MODEL SUMMARY
+
+  Number of variables:         4
+  Number of stochastic shocks: 2
+  Number of state variables:   3
+  Number of jumpers:           2
+  Number of static variables:  0
+
+
+MATRIX OF COVARIANCE OF EXOGENOUS SHOCKS
+Variables           e         u
+e            1.000000  0.000000
+u            0.000000  1.000000
+
+POLICY AND TRANSITION FUNCTIONS
+                                   c               k               a           sigma
+Constant                    0.323878        0.182181               0       -4.605170
+k(-1)                       0.711111        0.400000               0               0
+sigma(-1)                          0               0               0        0.900000
+a(-1)                       0.291490        0.163963        0.900000               0
+e                           0.003239        0.001822        0.010000               0
+u                                  0               0               0        1.000000
+
+
+THEORETICAL MOMENTS
+VARIABLE         MEAN  STD. DEV.   VARIANCE
+c              0.3239     0.0118     0.0001
+k              0.1822     0.0066     0.0000
+a              0.0000     0.0229     0.0005
+sigma         -4.6052     2.2942     5.2632
+
+
+
+VARIANCE DECOMPOSITION (in percent)
+              e       u
+c        100.00    0.00
+k        100.00    0.00
+a        100.00    0.00
+sigma      0.00  100.00
+
+
+
+MATRIX OF CORRELATIONS
+Variables         c       k       a   sigma
+c            1.0000  1.0000  0.9824  0.0000
+k            1.0000  1.0000  0.9824  0.0000
+a            0.9824  0.9824  1.0000  0.0000
+sigma        0.0000  0.0000  0.0000  1.0000
+
+
+
+COEFFICIENTS OF AUTOCORRELATION
+Order          1       2       3       4       5
+c         0.9559  0.8826  0.8033  0.7266  0.6553
+k         0.9559  0.8826  0.8033  0.7266  0.6553
+a         0.9000  0.8100  0.7290  0.6561  0.5905
+sigma     0.9000  0.8100  0.7290  0.6561  0.5905
+[Warning: Class 'datetime' is defined in a class folder
+and takes precedence over a function with the same name
+that is earlier on the MATLAB path. In a future release,
+class 'datetime' will no longer be given precedence.
+
+<a href="matlab: matlab.internal.identifyClassPrecedenceConflicts('datetime')">Click here for the locations of the conflicting items</a>.
+<a href="matlab: helpview('matlab','AtFolderPrecedence');">Click here for guidelines to avoid this warning</a>.] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('stoch_simul', '/Applications/Dynare/7-2025-10-09-2239-arm64/matlab/stochastic_solver/stoch_simul.m', 302)" style="font-weight:bold">stoch_simul</a> (<a href="matlab: opentoline('/Applications/Dynare/7-2025-10-09-2239-arm64/matlab/stochastic_solver/stoch_simul.m',302,0)">line 302</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('Perturbation_homework_sv.driver', '/Users/jrubior/Documents/GitHub/UABclass/Perturbation_Class_1/+Perturbation_homework_sv/driver.m', 281)" style="font-weight:bold">Perturbation_homework_sv.driver</a> (<a href="matlab: opentoline('/Users/jrubior/Documents/GitHub/UABclass/Perturbation_Class_1/+Perturbation_homework_sv/driver.m',281,0)">line 281</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('dynare', '/Applications/Dynare/7-2025-10-09-2239-arm64/matlab/dynare.m', 302)" style="font-weight:bold">dynare</a> (<a href="matlab: opentoline('/Applications/Dynare/7-2025-10-09-2239-arm64/matlab/dynare.m',302,0)">line 302</a>)] 
+Total computing time : 0h00m02s
+Note: warning(s) encountered in MATLAB/Octave code
