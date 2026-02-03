@@ -1,5 +1,5 @@
 function [residual, g1, g2, g3] = dynamic(y, x, params, steady_state, it_)
-    T = NaN(2, 1);
+    T = NaN(4, 1);
     if nargout <= 1
         residual = Perturbation_homework_sv.dynamic_resid(T, y, x, params, steady_state, it_, true);
     elseif nargout == 2

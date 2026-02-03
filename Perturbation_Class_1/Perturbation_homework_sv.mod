@@ -31,4 +31,4 @@ var u; stderr 1;
 end;
 
 
-stoch_simul(order=1);
+stoch_simul(order=2);

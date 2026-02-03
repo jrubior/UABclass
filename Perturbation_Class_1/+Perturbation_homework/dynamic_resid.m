@@ -23,8 +23,8 @@ if T_flag
     T = Perturbation_homework.dynamic_resid_tt(T, y, x, params, steady_state, it_);
 end
 residual = zeros(3, 1);
-    residual(1) = (1/y(3)) - (params(1)*1/y(6)*T(1));
-    residual(2) = (y(3)+y(4)) - (T(2));
+    residual(1) = (1/y(3)) - (T(1)*T(3));
+    residual(2) = (y(3)+y(4)) - (T(4)+(1-params(5))*y(1));
     residual(3) = (y(5)) - (params(2)*y(2)+params(4)*x(it_, 1));
 
 end

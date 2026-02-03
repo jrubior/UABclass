@@ -37,9 +37,9 @@ M_.endo_names(3) = {'a'};
 M_.endo_names_tex(3) = {'a'};
 M_.endo_names_long(3) = {'a'};
 M_.endo_partitions = struct();
-M_.param_names = cell(4,1);
-M_.param_names_tex = cell(4,1);
-M_.param_names_long = cell(4,1);
+M_.param_names = cell(5,1);
+M_.param_names_tex = cell(5,1);
+M_.param_names_long = cell(5,1);
 M_.param_names(1) = {'beta'};
 M_.param_names_tex(1) = {'beta'};
 M_.param_names_long(1) = {'beta'};
@@ -52,11 +52,14 @@ M_.param_names_long(3) = {'alpha'};
 M_.param_names(4) = {'sigma'};
 M_.param_names_tex(4) = {'sigma'};
 M_.param_names_long(4) = {'sigma'};
+M_.param_names(5) = {'ddelta'};
+M_.param_names_tex(5) = {'ddelta'};
+M_.param_names_long(5) = {'ddelta'};
 M_.param_partitions = struct();
 M_.exo_det_nbr = 0;
 M_.exo_nbr = 1;
 M_.endo_nbr = 3;
-M_.param_nbr = 4;
+M_.param_nbr = 5;
 M_.orig_endo_nbr = 3;
 M_.aux_vars = [];
 M_.heterogeneity_aggregates = {
@@ -81,6 +84,8 @@ options_.bytecode = false;
 options_.use_dll = false;
 options_.ramsey_policy = false;
 options_.discretionary_policy = false;
+M_.nonzero_hessian_eqs = [1 2];
+M_.hessian_eq_zero = isempty(M_.nonzero_hessian_eqs);
 M_.eq_nbr = 3;
 M_.ramsey_orig_eq_nbr = 0;
 M_.ramsey_orig_endo_nbr = 0;
@@ -107,7 +112,7 @@ M_.nboth   = 1;
 M_.nsfwrd   = 2;
 M_.nspred   = 2;
 M_.ndynamic   = 3;
-M_.dynamic_tmp_nbr = [2; 0; 0; 0; ];
+M_.dynamic_tmp_nbr = [4; 2; 0; 0; ];
 M_.equations_tags = {
   1 , 'name' , '1' ;
   2 , 'name' , '2' ;
@@ -173,19 +178,30 @@ oo_.steady_state = zeros(3, 1);
 M_.maximum_exo_lag = 0;
 M_.maximum_exo_lead = 0;
 oo_.exo_steady_state = zeros(1, 1);
-M_.params = NaN(4, 1);
+M_.params = NaN(5, 1);
 M_.endo_trends = struct('deflator', cell(3, 1), 'log_deflator', cell(3, 1), 'growth_factor', cell(3, 1), 'log_growth_factor', cell(3, 1));
-M_.NNZDerivatives = [11; -1; -1; ];
+M_.NNZDerivatives = [11; 14; -1; ];
 M_.dynamic_g1_sparse_rowval = int32([2 3 1 2 1 2 2 3 1 1 3 ]);
 M_.dynamic_g1_sparse_colval = int32([2 3 4 4 5 5 6 6 7 9 10 ]);
 M_.dynamic_g1_sparse_colptr = int32([1 1 2 3 5 7 9 10 10 11 12 ]);
+M_.dynamic_g2_sparse_indices = int32([1 4 4 ;
+1 7 7 ;
+1 7 5 ;
+1 7 9 ;
+1 5 5 ;
+1 5 9 ;
+1 9 9 ;
+2 2 2 ;
+2 2 6 ;
+2 6 6 ;
+]);
 M_.lhs = {
 '1/c'; 
 'c+k'; 
 'a'; 
 };
 M_.dynamic_mcp_equations_reordering = [1; 2; 3; ];
-M_.static_tmp_nbr = [2; 0; 0; 0; ];
+M_.static_tmp_nbr = [3; 0; 0; 0; ];
 M_.block_structure_stat.block(1).Simulation_Type = 3;
 M_.block_structure_stat.block(1).endo_nbr = 1;
 M_.block_structure_stat.block(1).mfs = 1;
@@ -195,8 +211,8 @@ M_.block_structure_stat.block(2).Simulation_Type = 6;
 M_.block_structure_stat.block(2).endo_nbr = 2;
 M_.block_structure_stat.block(2).mfs = 2;
 M_.block_structure_stat.block(2).equation = [ 2 1];
-M_.block_structure_stat.block(2).variable = [ 2 1];
-M_.block_structure_stat.variable_reordered = [ 3 2 1];
+M_.block_structure_stat.block(2).variable = [ 1 2];
+M_.block_structure_stat.variable_reordered = [ 3 1 2];
 M_.block_structure_stat.equation_reordered = [ 3 2 1];
 M_.block_structure_stat.incidence.sparse_IM = [
  1 1;
@@ -224,8 +240,10 @@ M_.params(1) = 0.9;
 beta = M_.params(1);
 M_.params(2) = 0.9;
 rho = M_.params(2);
-M_.params(4) = 0.01;
+M_.params(4) = 10;
 sigma = M_.params(4);
+M_.params(5) = 0.1;
+ddelta = M_.params(5);
 %
 % INITVAL instructions
 %
@@ -244,7 +262,7 @@ end
 % SHOCKS instructions
 %
 M_.Sigma_e(1, 1) = (1)^2;
-options_.order = 1;
+options_.order = 2;
 var_list_ = {};
 [info, oo_, options_, M_] = stoch_simul(M_, options_, oo_, var_list_);
 

@@ -10,7 +10,7 @@ Finding the optimal block decomposition of the static model...
   2 recursive block(s) and 1 simultaneous block(s).
   the largest simultaneous block has 2 equation(s)
                                  and 2 feedback variable(s).
-Computing dynamic model derivatives (order 1).
+Computing dynamic model derivatives (order 2).
 Normalizing the dynamic model...
 Finding the optimal block decomposition of the dynamic model...
 2 block(s) found:
@@ -42,18 +42,26 @@ sigma(-1)                          0               0               0        0.90
 a(-1)                       0.291490        0.163963        0.900000               0
 e                           0.003239        0.001822        0.010000               0
 u                                  0               0               0        1.000000
+k(-1),k(-1)                -1.170994       -0.658684               0               0
+a(-1),k(-1)                 0.640000        0.360000               0               0
+a(-1),a(-1)                 0.131171        0.073783               0               0
+e,e                         0.000016        0.000009               0               0
+u,e                         0.003239        0.001822        0.010000               0
+k(-1),e                     0.007111        0.004000               0               0
+sigma(-1),e                 0.002915        0.001640        0.009000               0
+a(-1),e                     0.002915        0.001640               0               0
 
 
-THEORETICAL MOMENTS
+APPROXIMATED THEORETICAL MOMENTS
 VARIABLE         MEAN  STD. DEV.   VARIANCE
-c              0.3239     0.0118     0.0001
-k              0.1822     0.0066     0.0000
+c              0.3241     0.0118     0.0001
+k              0.1823     0.0066     0.0000
 a              0.0000     0.0229     0.0005
 sigma         -4.6052     2.2942     5.2632
 
 
 
-VARIANCE DECOMPOSITION (in percent)
+APPROXIMATED VARIANCE DECOMPOSITION (in percent)
               e       u
 c        100.00    0.00
 k        100.00    0.00
@@ -62,7 +70,7 @@ sigma      0.00  100.00
 
 
 
-MATRIX OF CORRELATIONS
+APPROXIMATED MATRIX OF CORRELATIONS
 Variables         c       k       a   sigma
 c            1.0000  1.0000  0.9824  0.0000
 k            1.0000  1.0000  0.9824  0.0000
@@ -71,21 +79,10 @@ sigma        0.0000  0.0000  0.0000  1.0000
 
 
 
-COEFFICIENTS OF AUTOCORRELATION
+APPROXIMATED COEFFICIENTS OF AUTOCORRELATION
 Order          1       2       3       4       5
 c         0.9559  0.8826  0.8033  0.7266  0.6553
 k         0.9559  0.8826  0.8033  0.7266  0.6553
 a         0.9000  0.8100  0.7290  0.6561  0.5905
 sigma     0.9000  0.8100  0.7290  0.6561  0.5905
-[Warning: Class 'datetime' is defined in a class folder
-and takes precedence over a function with the same name
-that is earlier on the MATLAB path. In a future release,
-class 'datetime' will no longer be given precedence.
-
-<a href="matlab: matlab.internal.identifyClassPrecedenceConflicts('datetime')">Click here for the locations of the conflicting items</a>.
-<a href="matlab: helpview('matlab','AtFolderPrecedence');">Click here for guidelines to avoid this warning</a>.] 
-[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('stoch_simul', '/Applications/Dynare/7-2025-10-09-2239-arm64/matlab/stochastic_solver/stoch_simul.m', 302)" style="font-weight:bold">stoch_simul</a> (<a href="matlab: opentoline('/Applications/Dynare/7-2025-10-09-2239-arm64/matlab/stochastic_solver/stoch_simul.m',302,0)">line 302</a>)
-In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('Perturbation_homework_sv.driver', '/Users/jrubior/Documents/GitHub/UABclass/Perturbation_Class_1/+Perturbation_homework_sv/driver.m', 281)" style="font-weight:bold">Perturbation_homework_sv.driver</a> (<a href="matlab: opentoline('/Users/jrubior/Documents/GitHub/UABclass/Perturbation_Class_1/+Perturbation_homework_sv/driver.m',281,0)">line 281</a>)
-In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('dynare', '/Applications/Dynare/7-2025-10-09-2239-arm64/matlab/dynare.m', 302)" style="font-weight:bold">dynare</a> (<a href="matlab: opentoline('/Applications/Dynare/7-2025-10-09-2239-arm64/matlab/dynare.m',302,0)">line 302</a>)] 
 Total computing time : 0h00m02s
-Note: warning(s) encountered in MATLAB/Octave code

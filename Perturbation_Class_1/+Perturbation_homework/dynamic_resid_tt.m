@@ -18,9 +18,11 @@ function T = dynamic_resid_tt(T, y, x, params, steady_state, it_)
 %   T           [#temp variables by 1]       double  vector of temporary terms
 %
 
-assert(length(T) >= 2);
+assert(length(T) >= 4);
 
-T(1) = params(3)*exp(y(7))*y(4)^(params(3)-1);
-T(2) = exp(y(5))*y(1)^params(3);
+T(1) = params(1)*1/y(6);
+T(2) = params(3)*exp(y(7))*y(4)^(params(3)-1);
+T(3) = T(2)+1-params(5);
+T(4) = exp(y(5))*y(1)^params(3);
 
 end

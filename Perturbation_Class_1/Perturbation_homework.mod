@@ -1,16 +1,18 @@
 var c, k, a;
 varexo e;
 
-parameters beta, rho, alpha, sigma;
+parameters beta, rho, alpha, sigma, ddelta;
 
 alpha = 0.4;
 beta  = 0.9;
 rho   = 0.9;
-sigma = 0.01;
+sigma = 10;
+ddelta = 0.1;
+
 
 model;
-1/c=beta*(1/c(+1))*(alpha*exp(a(+1))*k^(alpha-1));
-c+k=exp(a)*k(-1)^alpha;
+1/c=beta*(1/c(+1))*(alpha*exp(a(+1))*k^(alpha-1)+(1-ddelta));
+c+k=exp(a)*k(-1)^alpha+(1-ddelta)*k(-1);
 a = rho*a(-1)+ sigma*e;
 end;
 
@@ -26,4 +28,4 @@ var e; stderr 1;
 end;
 
 
-stoch_simul(order=1);
+stoch_simul(order=2);

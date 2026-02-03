@@ -90,6 +90,8 @@ options_.bytecode = false;
 options_.use_dll = false;
 options_.ramsey_policy = false;
 options_.discretionary_policy = false;
+M_.nonzero_hessian_eqs = [1 2 3];
+M_.hessian_eq_zero = isempty(M_.nonzero_hessian_eqs);
 M_.eq_nbr = 4;
 M_.ramsey_orig_eq_nbr = 0;
 M_.ramsey_orig_endo_nbr = 0;
@@ -117,7 +119,7 @@ M_.nboth   = 1;
 M_.nsfwrd   = 2;
 M_.nspred   = 3;
 M_.ndynamic   = 4;
-M_.dynamic_tmp_nbr = [2; 0; 0; 0; ];
+M_.dynamic_tmp_nbr = [2; 2; 0; 0; ];
 M_.equations_tags = {
   1 , 'name' , '1' ;
   2 , 'name' , '2' ;
@@ -191,10 +193,23 @@ M_.maximum_exo_lead = 0;
 oo_.exo_steady_state = zeros(2, 1);
 M_.params = NaN(5, 1);
 M_.endo_trends = struct('deflator', cell(4, 1), 'log_deflator', cell(4, 1), 'growth_factor', cell(4, 1), 'log_growth_factor', cell(4, 1));
-M_.NNZDerivatives = [15; -1; -1; ];
+M_.NNZDerivatives = [15; 17; -1; ];
 M_.dynamic_g1_sparse_rowval = int32([2 3 4 1 2 1 2 2 3 3 4 1 1 3 4 ]);
 M_.dynamic_g1_sparse_colval = int32([2 3 4 5 5 6 6 7 7 8 8 9 11 13 14 ]);
 M_.dynamic_g1_sparse_colptr = int32([1 1 2 3 4 6 8 10 12 13 13 14 14 15 16 ]);
+M_.dynamic_g2_sparse_indices = int32([1 5 5 ;
+1 9 9 ;
+1 9 6 ;
+1 9 11 ;
+1 6 6 ;
+1 6 11 ;
+1 11 11 ;
+2 2 2 ;
+2 2 7 ;
+2 7 7 ;
+3 8 8 ;
+3 8 13 ;
+]);
 M_.lhs = {
 '1/c'; 
 'c+k'; 
@@ -276,7 +291,7 @@ end
 %
 M_.Sigma_e(1, 1) = (1)^2;
 M_.Sigma_e(2, 2) = (1)^2;
-options_.order = 1;
+options_.order = 2;
 var_list_ = {};
 [info, oo_, options_, M_] = stoch_simul(M_, options_, oo_, var_list_);
 

@@ -10,7 +10,7 @@ Finding the optimal block decomposition of the static model...
   1 recursive block(s) and 1 simultaneous block(s).
   the largest simultaneous block has 2 equation(s)
                                  and 2 feedback variable(s).
-Computing dynamic model derivatives (order 1).
+Computing dynamic model derivatives (order 2).
 Normalizing the dynamic model...
 Finding the optimal block decomposition of the dynamic model...
 2 block(s) found:
@@ -35,31 +35,43 @@ e            1.000000
 
 POLICY AND TRANSITION FUNCTIONS
                                    c               k               a
-Constant                    0.323878        0.182181               0
-k(-1)                       0.711111        0.400000               0
-a(-1)                       0.291490        0.163963        0.900000
-e                           0.003239        0.001822        0.010000
+Constant                  -13.027402       17.169704               0
+(correction)              -14.268482       14.268482               0
+k(-1)                       0.266028        0.845084               0
+a(-1)                       0.585375        0.792707        0.900000
+e                           6.504162        8.807855       10.000000
+k(-1),k(-1)                -0.012723       -0.009107               0
+a(-1),k(-1)                 0.081038        0.108962               0
+a(-1),a(-1)                 0.235121        0.385016               0
+e,e                        29.027260       47.532824               0
+k(-1),e                     0.900426        1.210687               0
+a(-1),e                     5.224907        8.555908               0
 
 
-THEORETICAL MOMENTS
-VARIABLE         MEAN  STD. DEV.   VARIANCE
-c              0.3239     0.0118     0.0001
-k              0.1822     0.0066     0.0000
-a              0.0000     0.0229     0.0005
+APPROXIMATED THEORETICAL MOMENTS
+VARIABLE          MEAN   STD. DEV.    VARIANCE
+c             815.1304     39.6114   1569.0649
+k            2454.2189    102.4895  10504.1074
+a               0.0000     22.9416    526.3158
 
 
 
-MATRIX OF CORRELATIONS
+APPROXIMATED MATRIX OF CORRELATIONS
 Variables         c       k       a
-c            1.0000  1.0000  0.9824
-k            1.0000  1.0000  0.9824
-a            0.9824  0.9824  1.0000
+c            1.0000  0.9925  0.8868
+k            0.9925  1.0000  0.8235
+a            0.8868  0.8235  1.0000
 
 
 
-COEFFICIENTS OF AUTOCORRELATION
+APPROXIMATED COEFFICIENTS OF AUTOCORRELATION
 Order          1       2       3       4       5
-c         0.9559  0.8826  0.8033  0.7266  0.6553
-k         0.9559  0.8826  0.8033  0.7266  0.6553
+c         0.9838  0.9562  0.9204  0.8789  0.8338
+k         0.9912  0.9692  0.9374  0.8987  0.8553
 a         0.9000  0.8100  0.7290  0.6561  0.5905
-Total computing time : 0h00m01s
+
+stoch_simul:: The simulations conducted for generating IRFs to e were explosive.
+stoch_simul:: No IRFs will be displayed. Either reduce the shock size, 
+stoch_simul:: use pruning, or set the approximation order to 1.
+
+Total computing time : 0h00m00s

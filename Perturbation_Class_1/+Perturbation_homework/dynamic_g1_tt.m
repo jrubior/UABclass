@@ -18,9 +18,11 @@ function T = dynamic_g1_tt(T, y, x, params, steady_state, it_)
 %   T           [#temp variables by 1]       double  vector of temporary terms
 %
 
-assert(length(T) >= 2);
+assert(length(T) >= 6);
 
 T = Perturbation_homework.dynamic_resid_tt(T, y, x, params, steady_state, it_);
 
+T(5) = exp(y(5))*getPowerDeriv(y(1),params(3),1);
+T(6) = params(3)*exp(y(7))*getPowerDeriv(y(4),params(3)-1,1);
 
 end
